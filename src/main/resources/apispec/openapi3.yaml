@@ -1,0 +1,277 @@
+openapi: 3.0.0
+info:
+  title: Springboot tutrial APIs - Provider, Service, Citizen
+  description: APIs for Services, Providers and Citizens
+  contact:
+    email: iam.soham@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/iamsoham/springboottutorials/1.0.0
+    description: SwaggerHub API Auto Mocking
+paths:
+  /services:
+    get:
+      summary: lists all services
+      description: list all services
+      operationId: getAllServices
+      responses:
+        "200":
+          description: all services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "500":
+          description: Internal Server Error.
+  /providers:
+    get:
+      summary: lists all providers
+      description: list all providers
+      operationId: getAllProviders
+      responses:
+        "200":
+          description: all providers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Provider'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "500":
+          description: Internal Server Error.
+  /service/{id}:
+    get:
+      summary: gets a specific service by id
+      description: get by service id
+      operationId: getServiceByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successfull response with Service info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "500":
+          description: Internal Server Error.
+  /provider/{id}:
+    get:
+      summary: gets a specific provider by id
+      description: get by provider id
+      operationId: getProviderByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successfull response with Provider info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "500":
+          description: Internal Server Error.
+  /providerservice/{id}:
+    get:
+      summary: gets a specific provider by id with Services
+      description: get by provider id along with all services
+      operationId: getProviderServicesByID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successfull response with Provider and Services info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderServices'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "500":
+          description: Internal Server Error.
+  /provider:
+    post:
+      summary: adds a Provider
+      description: Adds a Provider to the system
+      operationId: addProvider
+      requestBody:
+        description: Provider item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderRequestDTO'
+      responses:
+        "200":
+          description: Successfull response with Provider info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "409":
+          description: '#/components/responses/409ItemExists'
+        "500":
+          description: Internal Server Error.
+  /service:
+    post:
+      summary: adds an service
+      description: Adds a service to the system
+      operationId: addService
+      requestBody:
+        description: Service to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRequestDTO'
+      responses:
+        "200":
+          description: Successfull response with Service info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        "400":
+          description: Request is not correct.
+        "404":
+          description: There is no endpoint found.
+        "409":
+          description: '#/components/responses/409ItemExists'
+        "500":
+          description: Internal Server Error.
+components:
+  schemas:
+    ProviderRequestDTO:
+      required:
+        - description
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          example: Loco Poco
+        description:
+          type: string
+          example: Everything for your house
+    Provider:
+      required:
+        - description
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20
+        name:
+          type: string
+          example: Loco Poco
+        description:
+          type: string
+          example: Everything for your house
+    ServiceRequestDTO:
+      required:
+        - description
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          example: 3D Projector
+        description:
+          type: string
+          example: Projector for your house
+    Service:
+      required:
+        - description
+        - id
+        - name
+        - provider
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20
+        name:
+          type: string
+          example: 3D Projector
+        description:
+          type: string
+          example: Projector for your house
+        provider:
+          $ref: '#/components/schemas/Provider'
+    ProviderServices:
+      required:
+        - description
+        - id
+        - name
+        - services
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20
+        name:
+          type: string
+          example: Loco Poco
+        description:
+          type: string
+          example: Everything for your house
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+  responses:
+    "201ItemCreated":
+      description: Item got created successfully.
+    "400BadRequest":
+      description: Request is not correct.
+    "404NotFound":
+      description: There is no endpoint found.
+    "409ItemExists":
+      description: an existing item already exists.
+    "500InternalServerError":
+      description: Internal Server Error.
