@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/serivce-repository.iml" filepath="$PROJECT_DIR$/serivce-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serivce-repository-swagger.iml" filepath="$PROJECT_DIR$/serivce-repository-swagger.iml" />
     </modules>
   </component>
 </project>

@@ -3,6 +3,7 @@ package soham.spring.serivcerepository.api;
 import soham.spring.serivcerepository.model.Service;
 import soham.spring.serivcerepository.model.ServiceRequestDTO;
 import io.swagger.annotations.*;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,7 @@ import java.util.Optional;
  * A delegate to be called by the {@link ServiceApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-20T15:01:30.040636+01:00[Europe/Amsterdam]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-02-21T11:48:10.029318+01:00[Europe/Amsterdam]")
 public interface ServiceApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
