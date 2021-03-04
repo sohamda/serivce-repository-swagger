@@ -36,14 +36,15 @@ public class ServiceDelegate implements ServicesApiDelegate {
 
     @Override
     public ResponseEntity<List<soham.spring.serivcerepository.model.Service>> getAllServices() {
-        List<ServiceEntity> serviceEntities = serviceRepository.findAll();
-        List<soham.spring.serivcerepository.model.Service> services = serviceMapper.toServices(serviceEntities);
-        return ResponseEntity.status(HttpStatus.OK).body(services);
+        return ResponseEntity.status(HttpStatus.OK).body(serviceMapper.toServices(serviceRepository.findAll()));
     }
 
     @Override
     public ResponseEntity<soham.spring.serivcerepository.model.Service> getServiceByID(Integer id) {
-        soham.spring.serivcerepository.model.Service service = serviceMapper.toService(serviceRepository.findById(id).get());
-        return ResponseEntity.status(HttpStatus.OK).body(service);
+        Optional<ServiceEntity> service = serviceRepository.findById(id);
+        if(service.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(serviceMapper.toService(service.get()));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }

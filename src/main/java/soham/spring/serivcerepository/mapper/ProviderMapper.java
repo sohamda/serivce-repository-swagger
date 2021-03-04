@@ -12,4 +12,6 @@ public interface ProviderMapper {
     Provider toProvider(ProviderEntity providerEntity);
 
     List<Provider> toProviders(List<ProviderEntity> providerEntities);
+
+    ProviderEntity toEntity(Provider provider);
 }
