@@ -16,6 +16,6 @@ public class ServiceEntity {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "provider_id")
-    private ProviderEntity provider;
+    private ProviderEntity providerEntity;
 
 }

@@ -1,0 +1,15 @@
+package soham.spring.serivcerepository.mapper;
+
+import org.mapstruct.Mapper;
+import soham.spring.serivcerepository.entity.ProviderEntity;
+import soham.spring.serivcerepository.model.Provider;
+
+import java.util.List;
+
+@Mapper(componentModel = "spring")
+public interface ProviderMapper {
+
+    Provider toProvider(ProviderEntity providerEntity);
+
+    List<Provider> toProviders(List<ProviderEntity> providerEntities);
+}
