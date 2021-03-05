@@ -45,7 +45,7 @@ public class ProviderServicesDelegate implements ProviderserviceApiDelegate {
             ProviderServices providerServices = providerMapper.toProviderServices(provider.get());
             List<ServiceEntity> serviceEntityList = serviceRepository.findAllByProviderEntity(provider.get());
 
-            providerServices.setServices(serviceMapper.toServices(serviceEntityList));
+            providerServices.setServices(serviceMapper.toServicesWithoutProviders(serviceEntityList));
             return ResponseEntity.status(HttpStatus.OK).body(providerServices);
         }
 
