@@ -15,28 +15,35 @@
 	<description>Simple project to illustrate APIs with controller-service-repository structure</description>
 	<properties>
 		<java.version>11</java.version>
+		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
 		<lombok.version>1.18.16</lombok.version>
+		<swagger.annotations>1.6.1</swagger.annotations>
+		<javax.validation>2.0.1.Final</javax.validation>
+		<jackson.databind.nullable>0.2.1</jackson.databind.nullable>
+		<springfox.core>3.0.0</springfox.core>
+		<org.mapstruct>1.4.2.Final</org.mapstruct>
+		<openapi.generator.maven.plugin>5.0.0</openapi.generator.maven.plugin>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
-			<version>1.6.1</version>
+			<version>${swagger.annotations}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
+			<version>${javax.validation}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openapitools</groupId>
 			<artifactId>jackson-databind-nullable</artifactId>
-			<version>0.2.1</version>
+			<version>${jackson.databind.nullable}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-core</artifactId>
-			<version>3.0.0</version>
+			<version>${springfox.core}</version>
 		</dependency>
 
 		<dependency>
@@ -71,7 +78,7 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>1.4.2.Final</version>
+			<version>${org.mapstruct}</version>
 		</dependency>
 	</dependencies>
 
@@ -92,7 +99,7 @@
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>5.0.0</version>
+				<version>${openapi.generator.maven.plugin}</version>
 				<executions>
 					<execution>
 						<id>generate-spring-server</id>
@@ -121,36 +128,12 @@
 							<output>${project.build.directory}/generated-sources</output>
 						</configuration>
 					</execution>
-					<!--execution>
-						<id>generate-java-client</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<modelPackage>${project.groupId}.serivce-repository.model</modelPackage>
-							<apiPackage>${project.groupId}.serivce-repository.client.api</apiPackage>
-							<invokerPackage>${project.groupId}.serivce-repository.client</invokerPackage>
-							<inputSpec>${project.basedir}/src/main/resources/apispec/openapi3.yaml</inputSpec>
-							<generatorName>java</generatorName>
-							<library>resttemplate</library>
-							<generateApiDocumentation>false</generateApiDocumentation>
-							<generateApiTests>false</generateApiTests>
-							<generateModelDocumentation>false</generateModelDocumentation>
-							<generateModelTests>false</generateModelTests>
-							<configOptions>
-								<dateLibrary>java8</dateLibrary>
-								<sourceFolder>swagger</sourceFolder>
-								<interfaceOnly>false</interfaceOnly>
-							</configOptions>
-							<output>${project.build.directory}/generated-sources</output>
-						</configuration>
-					</execution-->
 				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven.compiler.plugin}</version>
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
@@ -161,7 +144,7 @@
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
-							<version>1.4.1.Final</version>
+							<version>${org.mapstruct}</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
