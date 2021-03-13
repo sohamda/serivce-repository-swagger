@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Springboot tutrial APIs - Provider, Service, Citizen
-  description: APIs for Services, Providers and Citizens
+  title: Springboot tutrial APIs - Provider and Service
+  description: APIs for Services and Providers
   contact:
     email: iam.soham@gmail.com
   license:
