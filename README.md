@@ -22,4 +22,4 @@ Implementation :
 
 ## Detail - How to
 
-Follow the step-by-step guide in this blog : 
+Follow the step-by-step guide in this blog : https://medium.com/springboot-chronicles/api-first-approach-with-openapi-contracts-maven-spring-boot-6aa9b9251341
