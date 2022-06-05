@@ -18,7 +18,7 @@ Implementation :
 ## To run this :
 `` mvn clean install ``
 
-`` mvn sprint-boot:run``
+`` mvn spring-boot:run``
 
 ## Detail - How to
 
