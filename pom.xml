@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>soham.spring</groupId>
@@ -14,9 +14,9 @@
 	<name>service-repository-swagger</name>
 	<description>Simple project to illustrate APIs with controller-service-repository structure</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<maven.compiler.plugin>3.8.1</maven.compiler.plugin>
-		<lombok.version>1.18.16</lombok.version>
+		<lombok.version>1.18.24</lombok.version>
 		<swagger.annotations>1.6.1</swagger.annotations>
 		<javax.validation>2.0.1.Final</javax.validation>
 		<jackson.databind.nullable>0.2.1</jackson.databind.nullable>
